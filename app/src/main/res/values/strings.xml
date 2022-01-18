@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Verifica Tu Inquilino</string>
+    <string name="PREFERENS">PREFERENS_USER</string>
 </resources>
