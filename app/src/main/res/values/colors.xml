@@ -5,6 +5,14 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Colores App -->
+
+    <color name="primaryColor">#b3e5fc</color>
+    <color name="primaryLightColor">#e6ffff</color>
+    <color name="primaryDarkColor">#82b3c9</color>
+    <color name="secondaryColor">#fff9c4</color>
+    <color name="secondaryLightColor">#fffff7</color>
+    <color name="secondaryDarkColor">#cbc693</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#000000</color>
 </resources>
