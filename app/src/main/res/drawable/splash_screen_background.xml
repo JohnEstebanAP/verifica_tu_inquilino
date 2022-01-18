@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@color/primaryDarkColor"/>
+    <item android:drawable="@color/primaryLightColor"/>
     <item
         android:gravity="center"
         android:width="300dp"
         android:height="300dp"
-        android:drawable="@drawable/ic_logotipo1">
+        android:drawable="@drawable/ic_logotipo3">
     </item>
 </layer-list>

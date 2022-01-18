@@ -15,4 +15,5 @@
     <color name="secondaryDarkColor">#cbc693</color>
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#000000</color>
+    <color name="colorWite">#ffffff</color>
 </resources>
