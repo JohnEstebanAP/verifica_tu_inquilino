@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--   <item android:drawable="@color/azul"/> -->
-    <item android:drawable="@color/color_primary_light"/>
 
-    <item android:gravity="center"
-        android:width="400dp"
-        android:height="300dp">
-        <bitmap android:src="@drawable/logoapp">
-        </bitmap>
+    <item android:drawable="@color/primaryDarkColor"/>
+    <item
+        android:gravity="center"
+        android:width="300dp"
+        android:height="300dp"
+        android:drawable="@drawable/ic_logotipo1">
     </item>
 </layer-list>

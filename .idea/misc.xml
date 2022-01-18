@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_logo.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/ic_logo1.xml" value="0.2234375" />
+        <entry key="app/src/main/res/drawable/ic_logo2.xml" value="0.2234375" />
+        <entry key="app/src/main/res/drawable/ic_logotipo1.xml" value="0.2234375" />
+        <entry key="app/src/main/res/drawable/ic_logotipo2.xml" value="0.2234375" />
+        <entry key="app/src/main/res/drawable/ic_logotipo3.xml" value="0.22552083333333334" />
         <entry key="app/src/main/res/drawable/splash_screen_background.xml" value="0.24479166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12545289855072464" />
       </map>
