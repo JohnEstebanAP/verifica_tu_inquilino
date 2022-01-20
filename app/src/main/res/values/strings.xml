@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Verifica Tu Inquilino</string>
     <string name="PREFERENS">PREFERENS_USER</string>
+    <string name="hola_welcome">!HOLA!</string>
+    <string name="bienvenido_welcome">Bienvenido</string>
+    <string name="que_tengas_un_excelente_dia_welcome">que tengas un excelente día.</string>
+    <string name="comenzar_welcome">Comenzar</string>
+    <string name="image_of_user_welcome">Image of user</string>
 </resources>

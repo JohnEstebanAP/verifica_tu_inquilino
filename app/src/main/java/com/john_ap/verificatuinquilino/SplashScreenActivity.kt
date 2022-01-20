@@ -1,11 +1,13 @@
 package com.john_ap.verificatuinquilino
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +23,8 @@ class SplashScreenActivity : AppCompatActivity() {
             e.printStackTrace()
         }
 
-        if (userName != null) {
-            val intent = Intent(this, WelcomeActivity::class.java)
-            intent.putExtra("NAME_USER", userName)
-            startActivity(intent)
+        if (userName == null) {
+            startActivity(Intent(this, WelcomeActivity::class.java))
             super.finish()//para finalizar la actividad y no quede en segundo plano avierta por detras luego de abrir la otra actividad.
         } else {
             startActivity(Intent(this, LoginActivity::class.java))
