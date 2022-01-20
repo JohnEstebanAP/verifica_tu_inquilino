@@ -7,7 +7,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-@SuppressLint("CustomSplashScreen")
+@SuppressLint("CustomSplashScreen")//para espisificaque este no es ua ventana ejecutable cons i respectivo xml sino que es un SplashScreen
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

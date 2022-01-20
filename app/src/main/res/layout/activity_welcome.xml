@@ -25,7 +25,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/txtv_welcome"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="140dp"
@@ -50,9 +50,9 @@
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold|italic"
-                app:layout_constraintEnd_toEndOf="@+id/textView4"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintEnd_toEndOf="@+id/txtv_welcome"
+                app:layout_constraintStart_toStartOf="@+id/txtv_welcome"
+                app:layout_constraintTop_toBottomOf="@+id/txtv_welcome" />
 
             <TextView
                 android:id="@+id/textView7"
