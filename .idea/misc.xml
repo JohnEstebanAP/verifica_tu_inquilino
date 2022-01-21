@@ -15,6 +15,7 @@
         <entry key="app/src/main/res/drawable/secundary_button.xml" value="0.11927083333333334" />
         <entry key="app/src/main/res/drawable/splash_screen_background.xml" value="0.24479166666666666" />
         <entry key="app/src/main/res/drawable/titulo_medio_circulo.xml" value="0.22" />
+        <entry key="app/src/main/res/layout-night/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.12952898550724637" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12545289855072464" />
