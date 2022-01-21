@@ -23,7 +23,7 @@ class SplashScreenActivity : AppCompatActivity() {
             e.printStackTrace()
         }
 
-        if (userName == null) {
+        if (userName != null) {
             startActivity(Intent(this, WelcomeActivity::class.java))
             super.finish()//para finalizar la actividad y no quede en segundo plano avierta por detras luego de abrir la otra actividad.
         } else {

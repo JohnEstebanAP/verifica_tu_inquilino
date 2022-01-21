@@ -28,5 +28,7 @@ class WelcomeActivity : AppCompatActivity() {
     fun openHome(){
         //ejecta la siguiente activity
         startActivity(Intent(this, HomeActivity::class.java))
+        //se cierra la activity de welcome
+        finishAffinity()
     }
 }

@@ -1,10 +1,29 @@
 <resources>
     <string name="app_name">Verifica Tu Inquilino</string>
+
+
+    <!-- file of SharedPrefereces -->
     <string name="PREFERENS">PREFERENS_USER</string>
+
+
+    <!-- Activity Welcome-->
     <string name="hola_welcome">!HOLA!</string>
     <string name="bienvenido_welcome">Bienvenido</string>
     <string name="que_tengas_un_excelente_dia_welcome">que tengas un excelente día.</string>
     <string name="comenzar_welcome">Comenzar</string>
     <string name="image_of_user_welcome">Image of user</string>
     <string name="bienvenido2_welcome">\"Bienvenido: \"</string>
+
+
+    <!-- Activity Login -->
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="no_tienes_cuenta">¿No tienes cuenta?</string>
+    <string name="iniciar">Iniciar</string>
+    <string name="nombre">Nombre</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="google">Google</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="imagen_de_titulo_login">imagen_de_titulo</string>
+
+
 </resources>
