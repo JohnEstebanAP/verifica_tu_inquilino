@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "672223482419",
+    "project_id": "verifica-tu-inquilino",
+    "storage_bucket": "verifica-tu-inquilino.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672223482419:android:3c2e8045fc14dc706b4946",
+        "android_client_info": {
+          "package_name": "com.john_ap.verificatuinquilino"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672223482419-vcvk3ol56i4s6nmhqhffj6q2r3vug2jv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.john_ap.verificatuinquilino",
+            "certificate_hash": "e145e9321dd3f2b2f25ad8a7c636a698787d3c09"
+          }
+        },
+        {
+          "client_id": "672223482419-856504k4nfglfthf35f0qfm5jqfmt5mm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYFAyoGWD3WxaLjQGGw2UxDsfrR1qlc4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672223482419-856504k4nfglfthf35f0qfm5jqfmt5mm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
