@@ -24,6 +24,8 @@
     <string name="google">Google</string>
     <string name="registrarse">Registrarse</string>
     <string name="imagen_de_titulo_login">imagen_de_titulo</string>
+    <string name="inputCorreo">Por favor ingrese el correo</string>
+    <string name="input_contraseña">Por favor ingrese la contraseña</string>
 
 
 </resources>
