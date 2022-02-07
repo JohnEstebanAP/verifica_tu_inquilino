@@ -1,23 +1,37 @@
 package com.john_ap.verificatuinquilino
 
+import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        //funcion para  lugiar al usuario
 
+        //Se creo una instancia o un objeto, de la autenticacion de firebase
+        var mAuth = FirebaseAuth.getInstance()
+
+        //funcion para  logiar al usuario
+        //login por medio del correo y la contraseña
         login()
+
+        //login por medio del correo de google
+        btn_google.setOnClickListener {
+            loginGoogle()
+        }
     }
 
     private fun login(){
@@ -43,6 +57,22 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    private fun loginGoogle(){
+        // Configuracion
+        val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
+        val googleClient = GoogleSignIn.getClient(this,googleConf)
+
+        var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result -> {
+                if(result.resultCode == Activity.RESULT_OK){
+                    var data = result.data
+
+                }
+            }
+        }
+
+        resultLauncher.launch(googleClient.getSignInIntent())
+    }
 
     private fun addUser(){
 
@@ -64,9 +94,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
-
 
 
     private fun showHome(email: String, provider: ProviderType){

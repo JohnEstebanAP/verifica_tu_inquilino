@@ -13,7 +13,8 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val sharedPref: SharedPreferences = getSharedPreferences(getString(R.string.PREFERENS), Context.MODE_PRIVATE)
-        val userName = sharedPref.getString("NAME_USER", null)
+        val email = sharedPref.getString("email", null)
+        val provider = sharedPref.getString("provider", null)
 
         //El metodo Thread nos permite utilizar ilos este lo nos permite con el metodo sleep detenernos o detener nuestro porgrama en un punto espesifico por milisegundos.
         //Este puede generar error por lo que lo adecuado es colocarlo dentro de un try catch
@@ -23,12 +24,21 @@ class SplashScreenActivity : AppCompatActivity() {
             e.printStackTrace()
         }
 
-        if (userName != null) {
-            startActivity(Intent(this, WelcomeActivity::class.java))
+        if (email != null && provider != null) {
+            showHome(email, ProviderType.valueOf(provider))
             super.finish()//para finalizar la actividad y no quede en segundo plano avierta por detras luego de abrir la otra actividad.
         } else {
             startActivity(Intent(this, LoginActivity::class.java))
             super.finish()//para finalizar la actividad y no quede en segundo plano avierta por detras luego de abrir la otra actividad.
         }
     }
+
+    private fun showHome(email: String, provider: ProviderType){
+        val homeIntent = Intent(this, HomeActivity::class.java)
+        homeIntent.putExtra("email", email)
+        homeIntent.putExtra("provider", provider.name)
+        startActivity(homeIntent)
+        finishAffinity()
+    }
+
 }
