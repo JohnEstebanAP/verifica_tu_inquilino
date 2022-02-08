@@ -76,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
         resultLauncher.launch(googleClient.signInIntent)
     }
 
-    var resultLauncher: ActivityResultLauncher<Intent> =
+    private var resultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val task: Task<GoogleSignInAccount> =
