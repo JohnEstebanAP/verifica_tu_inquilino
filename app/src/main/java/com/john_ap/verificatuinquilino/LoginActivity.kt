@@ -121,33 +121,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-
-    private fun addUser() {
-
-        btn_entrar.setOnClickListener {
-            if (TextUtils.isEmpty(txtUser.text)) {
-                Toast.makeText(this, R.string.inputCorreo, Toast.LENGTH_SHORT).show()
-                txtUser.requestFocus()
-            } else if (TextUtils.isEmpty(txtPassword.text)) {
-                Toast.makeText(this, R.string.input_contraseña, Toast.LENGTH_SHORT).show()
-                txtPassword.requestFocus()
-            } else {
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(
-                    txtUser.text.toString(),
-                    txtPassword.text.toString()
-                ).addOnCompleteListener {
-                    //Comprobamos si la operacion se completo Correctamente
-                    if (it.isSuccessful) {
-                        showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
-                    } else {
-                        showAlert()
-                    }
-                }
-            }
-        }
-    }
-
-
     private fun showHome(email: String, provider: ProviderType) {
 
         val homeIntent = Intent(this, HomeActivity::class.java)
