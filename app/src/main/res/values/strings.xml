@@ -26,6 +26,9 @@
     <string name="imagen_de_titulo_login">imagen_de_titulo</string>
     <string name="inputCorreo">Por favor ingrese el correo</string>
     <string name="input_contraseña">Por favor ingrese la contraseña</string>
+    <string name="showalert_message">Se ha producido un error autenticando al usuario</string>
+    <string name="showalert_title">Error</string>
+    <string name="showalert_positivebutton">Aceptar</string>
 
 
 </resources>

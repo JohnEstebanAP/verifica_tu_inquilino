@@ -5,12 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -20,9 +26,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        //Se creo una instancia o un objeto, de la autenticacion de firebase
-        var mAuth = FirebaseAuth.getInstance()
 
         //funcion para  logiar al usuario
         //login por medio del correo y la contraseña
@@ -34,21 +37,24 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun login(){
+    private fun login() {
 
         btn_entrar.setOnClickListener {
             if (TextUtils.isEmpty(txtUser.text)) {
                 Toast.makeText(this, R.string.inputCorreo, Toast.LENGTH_SHORT).show()
                 txtUser.requestFocus()
-            }else if (TextUtils.isEmpty(txtPassword.text)) {
+            } else if (TextUtils.isEmpty(txtPassword.text)) {
                 Toast.makeText(this, R.string.input_contraseña, Toast.LENGTH_SHORT).show()
                 txtPassword.requestFocus()
-            }else{
-                FirebaseAuth.getInstance().signInWithEmailAndPassword(txtUser.text.toString(), txtPassword.text.toString()).addOnCompleteListener{
+            } else {
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                    txtUser.text.toString(),
+                    txtPassword.text.toString()
+                ).addOnCompleteListener {
                     //Comprobamos si la operacion se completo Correctamente
-                    if(it.isSuccessful){
+                    if (it.isSuccessful) {
                         showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
-                    }else{
+                    } else {
                         showAlert()
                     }
                 }
@@ -57,38 +63,78 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun loginGoogle(){
+    private fun loginGoogle() {
         // Configuracion
-        val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
-        val googleClient = GoogleSignIn.getClient(this,googleConf)
+        val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
+        val googleClient = GoogleSignIn.getClient(this, googleConf)
 
-        var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            result -> {
-                if(result.resultCode == Activity.RESULT_OK){
-                    var data = result.data
+        //delogiamos cualquier cuenta previa que aya podido estar autenticada en ese momento
 
+        googleClient.signOut()
+
+        resultLauncher.launch(googleClient.signInIntent)
+    }
+
+    var resultLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val task: Task<GoogleSignInAccount> =
+                    GoogleSignIn.getSignedInAccountFromIntent(result.data)
+
+                //creamos un try chat para caturar posibles execiones
+                try {
+                    //recuperamos la cuenta selecionada por el usuario
+                    val account: GoogleSignInAccount? = task.getResult(ApiException::class.java)
+
+                    //verificamos qeu no sea una cuenta nula
+                    if (account != null) {
+                        //recuperamos la credencial de la cuenta
+                        val credential: AuthCredential =
+                            GoogleAuthProvider.getCredential(account.idToken, null)
+
+                        //se envia la credencial del correo electronico de google relisando un reguistro de este correo
+                        //si se puede reguistrar o ya esta reguistardp el task.isSuccessful retorna true y pasa al home,
+                        // si no se puede registrat o verificar la cuenta muestra una alerta
+                        //de error ya que no se pudo autenticar al usuario.
+                        FirebaseAuth.getInstance().signInWithCredential(credential)
+                            .addOnCompleteListener {
+                                if (it.isSuccessful) {
+                                    showHome(account.email ?: " ", ProviderType.GOOGLE)
+                                } else {
+                                    showAlert()
+                                }
+                            }
+                    } else {
+                        Toast.makeText(this, "Cuenta Nula", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: ApiException) {
+                    e.printStackTrace()
+                    showAlert()
                 }
+
             }
         }
 
-        resultLauncher.launch(googleClient.getSignInIntent())
-    }
 
-    private fun addUser(){
+    private fun addUser() {
 
         btn_entrar.setOnClickListener {
             if (TextUtils.isEmpty(txtUser.text)) {
                 Toast.makeText(this, R.string.inputCorreo, Toast.LENGTH_SHORT).show()
                 txtUser.requestFocus()
-            }else if (TextUtils.isEmpty(txtPassword.text)) {
+            } else if (TextUtils.isEmpty(txtPassword.text)) {
                 Toast.makeText(this, R.string.input_contraseña, Toast.LENGTH_SHORT).show()
                 txtPassword.requestFocus()
-            }else{
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(txtUser.text.toString(), txtPassword.text.toString()).addOnCompleteListener{
+            } else {
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+                    txtUser.text.toString(),
+                    txtPassword.text.toString()
+                ).addOnCompleteListener {
                     //Comprobamos si la operacion se completo Correctamente
-                    if(it.isSuccessful){
+                    if (it.isSuccessful) {
                         showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
-                    }else{
+                    } else {
                         showAlert()
                     }
                 }
@@ -97,7 +143,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    private fun showHome(email: String, provider: ProviderType){
+    private fun showHome(email: String, provider: ProviderType) {
 
         val homeIntent = Intent(this, HomeActivity::class.java)
         homeIntent.putExtra("email", email)
@@ -106,11 +152,11 @@ class LoginActivity : AppCompatActivity() {
         finishAffinity()
     }
 
-    private fun showAlert(){
+    private fun showAlert() {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error")
-        builder.setMessage("Se ha producido un error autenticando al usuario")
-        builder.setPositiveButton("Aceptar", null)
+        builder.setTitle(getString(R.string.showalert_title))
+        builder.setMessage(getString(R.string.showalert_message))
+        builder.setPositiveButton(getString(R.string.showalert_positivebutton), null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
