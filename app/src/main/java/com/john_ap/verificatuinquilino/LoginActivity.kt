@@ -35,6 +35,11 @@ class LoginActivity : AppCompatActivity() {
         btn_google.setOnClickListener {
             loginGoogle()
         }
+
+        registrarse.setOnClickListener {
+            startActivity(Intent(this,RegisterActivity::class.java))
+            finishAffinity()
+        }
     }
 
     private fun login() {

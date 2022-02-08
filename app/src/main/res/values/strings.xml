@@ -29,6 +29,14 @@
     <string name="showalert_message">Se ha producido un error autenticando al usuario</string>
     <string name="showalert_title">Error</string>
     <string name="showalert_positivebutton">Aceptar</string>
+    <string name="imagen_del_titulo">Imagen del titulo</string>
+    <string name="formulario_de_reguistro">Formulario de registro</string>
+    <string name="registro_nombre">Nombre</string>
+    <string name="reguistro_correo_electronico_o_usuario">Correo Electronico o Usuario</string>
+    <string name="registro_apellido">Apellido</string>
+    <string name="registro_contraseña">Contraseña</string>
+    <string name="registro_finalizar">Finalizar</string>
+    <string name="terminos_condiciones">Acepto los términos y condiciones</string>
 
 
 </resources>
